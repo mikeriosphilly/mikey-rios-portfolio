@@ -29,8 +29,8 @@ body {
 @layer base {
   h1 {
     font-family: "Boldonse", system-ui;
-    @apply text-5xl sm:text-6xl lg:text-5xl font-semibold text-accent;
-    line-height: 1.5;
+    @apply font-semibold text-accent leading-snug;
+    @apply text-4xl sm:text-4xl lg:text-5xl; /* smaller on mobile */
   }
 
   /* Keep keyboard accessibility */

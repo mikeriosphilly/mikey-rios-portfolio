@@ -13,7 +13,7 @@ export default function Home() {
         {/* subtle purple glow */}
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,theme(colors.glow)/18%,transparent_60%)]" />
 
-        <div className="relative mx-auto max-w-6xl px-6 py-20">
+        <div className="relative mx-auto max-w-6xl px-6 pt-8 pb-14 sm:pt-14 sm:pb-20">
           <div className="grid items-center gap-10 md:grid-cols-2">
             {/* Text */}
             <div className="space-y-6">

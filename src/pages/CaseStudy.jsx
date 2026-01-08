@@ -3,12 +3,12 @@ import { caseStudies } from "../data/caseStudies";
 import ScreenshotBlock from "../components/ScreenshotBlock";
 
 function Section({ title, children, variant = "supporting" }) {
-  const spacing = variant === "primary" ? "py-16" : "py-12";
+  const spacing = variant === "primary" ? "py-14 sm:py-16" : "py-10 sm:py-12";
   const heading = variant === "primary" ? "text-2xl sm:text-3xl" : "text-xl";
 
   return (
-    <section className={`${spacing}`}>
-      <div className="mx-auto max-w-5xl px-6">
+    <section className={spacing}>
+      <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
         <div className="flex items-center gap-3">
           <h2 className={`${heading} font-semibold tracking-tight text-text`}>
             {title}
@@ -75,7 +75,7 @@ export default function CaseStudy() {
   if (!cs) {
     return (
       <main className="bg-bg">
-        <div className="mx-auto max-w-5xl px-6 py-16">
+        <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 py-16">
           <p className="text-muted">Case study not found.</p>
           <Link
             to="/work"
@@ -90,30 +90,25 @@ export default function CaseStudy() {
 
   return (
     <main className="bg-bg text-text">
-      {/* FULL-WIDTH HERO IMAGE */}
+      {/* TRUE FULL-BLEED HERO IMAGE */}
       {cs.images?.hero ? (
         <section className="border-b border-border">
-          <div className="mx-auto max-w-5xl px-6 pt-10 pb-10">
-            <div className="overflow-hidden rounded-2xl border border-border bg-surface/30">
-              <img
-                src={cs.images.hero}
-                alt={`${cs.title} hero`}
-                className="h-full w-full object-cover"
-                loading="eager"
-              />
-            </div>
-          </div>
+          <img
+            src={cs.images.hero}
+            alt={`${cs.title} hero`}
+            className="h-[220px] w-full object-cover sm:h-[360px] lg:h-[420px]"
+            loading="eager"
+          />
         </section>
       ) : null}
 
       {/* HEADER CONTENT */}
       <header>
-        <div className="mx-auto max-w-5xl px-6 py-14">
+        <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 py-10 sm:py-14">
           <p className="text-sm text-muted">{cs.hero.eyebrow}</p>
 
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-5xl">
-            {cs.hero.headline}
-          </h1>
+          {/* Let global h1 styling kick in, but keep spacing classes */}
+          <h1 className="mt-3">{cs.hero.headline}</h1>
 
           <p className="mt-4 max-w-2xl text-lg text-muted">{cs.hero.subhead}</p>
 
@@ -126,8 +121,8 @@ export default function CaseStudy() {
             ))}
           </div>
 
-          {/* META CARDS (FULL WIDTH GRID) */}
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {/* META CARDS */}
+          <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {cs.client ? <Card label="Client" value={cs.client} /> : null}
             {cs.year ? <Card label="Year" value={cs.year} /> : null}
             <Card label="Role" value={cs.meta.role} />
@@ -154,8 +149,6 @@ export default function CaseStudy() {
           </div>
         </div>
       </header>
-
-      {/* ...keep the rest of your sections exactly the same... */}
 
       {/* BODY */}
       <Section title="Summary" variant="primary">
@@ -215,6 +208,7 @@ export default function CaseStudy() {
         ) : null}
       </Section>
 
+      {/* Supporting screenshots */}
       <ScreenshotBlock images={cs.images?.supporting ?? []} />
 
       <Section title={cs.outcome.title} variant="primary">
