@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* Tailwind v4 theme tokens */
+@theme {
+  --color-bg: #07070a;
+  --color-surface: #101018;
+  --color-border: #262638;
+
+  --color-text: #f2f2f7;
+  --color-muted: #b8b8c7;
+
+  --color-accent: #b7ff2a;
+  --color-glow: #7c3aed;
+}
+
+/* Page defaults */
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Example utility for metrics */
+.metric {
+  color: var(--color-accent);
+  text-shadow: 0 0 16px color-mix(in oklab, var(--color-glow), transparent 75%);
+}
+
+@layer base {
+  h1 {
+    font-family: "Boldonse", system-ui;
+    @apply text-5xl sm:text-6xl lg:text-5xl font-semibold text-accent;
+    line-height: 1.5;
+  }
+
+  /* Keep keyboard accessibility */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px
+      color-mix(in oklab, var(--color-glow), transparent 60%);
+  }
+}
+
+@layer components {
+  /* Intentional glow targets (opt-in classes) */
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-medium transition;
+  }
+
+  .btn-primary {
+    @apply bg-accent text-bg hover:opacity-95;
+  }
+
+  .btn-secondary {
+    @apply border border-border bg-surface/40 text-text hover:bg-surface/60;
+  }
+
+  /* Glow on hover + click focus for buttons */
+  .btn:hover {
+    box-shadow: 0 0 0 2px
+        color-mix(in oklab, var(--color-glow), transparent 72%),
+      0 0 26px color-mix(in oklab, var(--color-glow), transparent 84%);
+  }
+
+  .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px
+        color-mix(in oklab, var(--color-glow), transparent 60%),
+      0 0 28px color-mix(in oklab, var(--color-glow), transparent 82%);
+  }
+
+  /* Card hover glow (WorkCard / ProjectCard etc) */
+  .card-hover:hover {
+    border-color: color-mix(
+      in oklab,
+      var(--color-glow),
+      var(--color-border) 60%
+    );
+    box-shadow: 0 0 0 2px
+        color-mix(in oklab, var(--color-glow), transparent 85%),
+      0 18px 50px color-mix(in oklab, var(--color-glow), transparent 90%);
+  }
+
+  /* Nav active stays special */
+  .nav-active {
+    color: var(--color-accent);
+    text-shadow: 0 0 12px
+      color-mix(in oklab, var(--color-glow), transparent 70%);
+  }
+}
