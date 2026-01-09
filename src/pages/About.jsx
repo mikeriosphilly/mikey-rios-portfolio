@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import headshot from "../assets/about/Me-profile.jpg";
+import headshot from "../assets/about/Me-Profile.jpg";
 import { Button } from "../components/Button";
 
 function Section({ title, children, align = "left" }) {
