@@ -88,21 +88,39 @@ export default function CaseStudy() {
     );
   }
 
+  // Support BOTH image formats:
+  // - old: hero is a string path
+  // - new: hero is { src, alt, caption }
+  const heroSrc =
+    typeof cs.images?.hero === "string" ? cs.images.hero : cs.images?.hero?.src;
+
+  const heroAlt =
+    typeof cs.images?.hero === "object" && cs.images?.hero?.alt
+      ? cs.images.hero.alt
+      : `${cs.title} hero`;
+
+  // Optional caption from data, otherwise use your default
+  const heroCaption =
+    typeof cs.images?.hero === "object" && cs.images?.hero?.caption
+      ? cs.images.hero.caption
+      : "Representative UI recreated in Figma. Original product visuals are proprietary.";
+
   return (
     <main className="bg-bg text-text">
-      {/* TRUE FULL-BLEED HERO IMAGE */}
-      {cs.images?.hero ? (
-        <section className="border-border">
-          <img
-            src={cs.images.hero}
-            alt={`${cs.title} hero`}
-            className="h-[220px] w-full rounded-2xl object-cover object-top sm:h-[360px] lg:h-[420px]"
-            loading="eager"
-          />
-          <p className="mt-3 text-s text-muted">
-            Representative UI recreated in Figma. Original product visuals are
-            proprietary.
-          </p>
+      {/* HERO IMAGE */}
+      {heroSrc ? (
+        <section className="mx-auto w-full max-w-5xl px-4 sm:px-6 pt-8 sm:pt-10">
+          <figure className="overflow-hidden rounded-2xl border border-border bg-surface/30">
+            <img
+              src={heroSrc}
+              alt={heroAlt}
+              className="h-[220px] w-full object-cover object-top sm:h-[360px] lg:h-[420px]"
+              loading="eager"
+            />
+            <figcaption className="px-5 py-4 text-sm text-muted">
+              {heroCaption}
+            </figcaption>
+          </figure>
         </section>
       ) : null}
 
@@ -111,7 +129,7 @@ export default function CaseStudy() {
         <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 py-10 sm:py-14">
           <p className="text-sm text-muted">{cs.hero.eyebrow}</p>
 
-          {/* Let global h1 styling kick in, but keep spacing classes */}
+          {/* Let global h1 styling kick in */}
           <h1 className="mt-3">{cs.hero.headline}</h1>
 
           <p className="mt-4 max-w-2xl text-lg text-muted">{cs.hero.subhead}</p>

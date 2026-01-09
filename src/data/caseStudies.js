@@ -1,9 +1,11 @@
 // src/data/caseStudies.js
+
 // Drops in the Bucket
 import DITB_THUMB from "../assets/case-studies/drops-in-the-bucket/thumb.jpg";
 import DITB_HERO from "../assets/case-studies/drops-in-the-bucket/hero.jpg";
 import DITB_SUP_1 from "../assets/case-studies/drops-in-the-bucket/support-1.jpg";
 import DITB_SUP_2 from "../assets/case-studies/drops-in-the-bucket/support-2.jpg";
+
 // Voices
 import VOICES_THUMB from "../assets/case-studies/voices/thumb.jpg";
 import VOICES_HERO from "../assets/case-studies/voices/hero.jpg";
@@ -31,10 +33,13 @@ export const caseStudies = [
     tags: [
       "Front-End",
       "UX",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Adobe XD",
       "Design Systems",
       "Legacy Systems",
       "Intranet",
-      "JavaScript",
     ],
 
     summary:
@@ -140,18 +145,24 @@ export const caseStudies = [
     featured: true,
 
     images: {
-      thumbnail: DITB_THUMB,
-      hero: DITB_HERO,
+      thumbnail: {
+        src: DITB_THUMB,
+        alt: "Drops in the Bucket thumbnail preview",
+      },
+      hero: {
+        src: DITB_HERO,
+        alt: "Drops in the Bucket recognition feed showing a sample post, navigation, and employee praise",
+        caption:
+          "Representative UI recreated in Figma. Original production system was proprietary to Phoenix Contact.",
+      },
       supporting: [
         {
           src: DITB_SUP_1,
-          alt: "",
-          caption: "Early layout exploration and hierarchy decisions.",
+          alt: "Layout of the drop post feed, showing thumbnail avatars of employees, names, and the icons for liking and commenting on posts",
         },
         {
           src: DITB_SUP_2,
-          alt: "",
-          caption: "Reusable components used throughout the platform.",
+          alt: "A photo of the Drops in the Bucket site on a tablet device being held by a user",
         },
       ],
     },
@@ -162,7 +173,16 @@ export const caseStudies = [
     title: "Voices",
     client: "Phoenix Contact, USA (Internal Intranet)",
     year: "2018–2025",
-    tags: ["Front-End", "UX", "Publishing", "Legacy Systems", "VBScript"],
+    tags: [
+      "Front-End",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "UX",
+      "Publishing",
+      "Legacy Systems",
+      "VBScript",
+    ],
 
     summary:
       "A lightweight publishing system that let HR post employee stories consistently, even without a CMS, and made internal voices easier to share and discover.",
@@ -271,18 +291,24 @@ export const caseStudies = [
     featured: true,
 
     images: {
-      thumbnail: VOICES_THUMB,
-      hero: VOICES_HERO,
+      thumbnail: {
+        src: VOICES_THUMB,
+        alt: "Voices thumbnail preview",
+      },
+      hero: {
+        src: VOICES_HERO,
+        alt: "Voices layout showing title and blog post structure with thumbnail, title, author avatar, author name, date, and read more link.",
+        caption:
+          "Representative UI recreated in Figma. Original implementation lived inside a legacy intranet.",
+      },
       supporting: [
         {
           src: VOICES_SUP_1,
-          alt: "",
-          caption: "Early layout exploration and hierarchy decisions.",
+          alt: "Layout of blog posts showing consistent structure with title, author, date, thumbnail image, and read more link.",
         },
         {
           src: VOICES_SUP_2,
-          alt: "",
-          caption: "Reusable components used throughout the platform.",
+          alt: "Flow chart of Agile iterative process showing Sprint, Daily Scrum, and other steps.",
         },
       ],
     },
@@ -293,7 +319,17 @@ export const caseStudies = [
     title: "Holiday eCards",
     client: "Phoenix Contact, USA (Internal Intranet)",
     year: "2019–2025",
-    tags: ["Front-End", "UX", "JavaScript", "CSS Animations", "Intranet"],
+    tags: [
+      "Front-End",
+      "HTML",
+      "CSS",
+      "Javascript",
+      "CSS Animations",
+      "UX",
+      "Design Systems",
+      "Legacy Systems",
+      "Intranet",
+    ],
 
     summary:
       "A digital eCard experience that replaced physical holiday cards with something faster, more personal, and scalable enough for company-wide use.",
@@ -395,18 +431,24 @@ export const caseStudies = [
     featured: false,
 
     images: {
-      thumbnail: ECARDS_THUMB,
-      hero: ECARDS_HERO,
+      thumbnail: {
+        src: ECARDS_THUMB,
+        alt: "Holiday eCards thumbnail preview",
+      },
+      hero: {
+        src: ECARDS_HERO,
+        alt: "Holiday eCards example of a holiday card with festive design and personalized message",
+        caption:
+          "Representative UI recreated in Figma. Original implementation lived inside a legacy intranet.",
+      },
       supporting: [
         {
           src: ECARDS_SUP_1,
-          alt: "",
-          caption: "Early layout exploration and hierarchy decisions.",
+          alt: "Interface of the eCards card selection and personalization flow showing various card options",
         },
         {
           src: ECARDS_SUP_2,
-          alt: "",
-          caption: "Reusable components used throughout the platform.",
+          alt: "Example of an eCard with animated elements and personalized message",
         },
       ],
     },
@@ -417,7 +459,16 @@ export const caseStudies = [
     title: "Finance Department Dashboard",
     client: "Phoenix Contact, USA (Internal Intranet)",
     year: "2020–2025",
-    tags: ["UX", "Front-End", "Information Architecture", "Legacy Systems"],
+    tags: [
+      "UX",
+      "Front-End",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "VBScript",
+      "Information Architecture",
+      "Legacy Systems",
+    ],
 
     summary:
       "A centralized dashboard that replaced a fragmented finance intranet with a clearer, task-first experience built around how people actually work.",
@@ -519,8 +570,16 @@ export const caseStudies = [
     featured: false,
 
     images: {
-      thumbnail: FIN_THUMB,
-      hero: FIN_HERO,
+      thumbnail: {
+        src: FIN_THUMB,
+        alt: "Finance Department Dashboard thumbnail preview",
+      },
+      hero: {
+        src: FIN_HERO,
+        alt: "Finance Department Dashboard showing widget-based layout and quick actions tools",
+        caption:
+          "Representative UI recreated in Figma. Original implementation lived inside a legacy intranet.",
+      },
     },
   },
 ];

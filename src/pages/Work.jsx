@@ -14,15 +14,27 @@ export default function Work() {
         </header>
 
         <div className="grid gap-6 sm:grid-cols-2">
-          {caseStudies.map((cs) => (
-            <WorkCard
-              key={cs.slug}
-              slug={cs.slug}
-              title={cs.title}
-              description={cs.summary}
-              thumbnail={cs.images?.thumbnail}
-            />
-          ))}
+          {caseStudies.map((cs) => {
+            const thumb = cs.images?.thumbnail;
+
+            const thumbnailSrc = typeof thumb === "string" ? thumb : thumb?.src;
+
+            const thumbnailAlt =
+              typeof thumb === "object" && thumb?.alt
+                ? thumb.alt
+                : `${cs.title} thumbnail`;
+
+            return (
+              <WorkCard
+                key={cs.slug}
+                slug={cs.slug}
+                title={cs.title}
+                description={cs.summary}
+                thumbnail={thumbnailSrc}
+                thumbnailAlt={thumbnailAlt}
+              />
+            );
+          })}
         </div>
       </section>
     </main>
