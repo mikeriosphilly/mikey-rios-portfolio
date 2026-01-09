@@ -160,7 +160,7 @@ export const caseStudies = [
   {
     slug: "voices",
     title: "Voices",
-    client: "Confidential (Internal Intranet)",
+    client: "Phoenix Contact, USA (Internal Intranet)",
     year: "2018–2025",
     tags: ["Front-End", "UX", "Publishing", "Legacy Systems", "VBScript"],
 
@@ -291,7 +291,7 @@ export const caseStudies = [
   {
     slug: "holiday-ecards",
     title: "Holiday eCards",
-    client: "Confidential (Internal Intranet)",
+    client: "Phoenix Contact, USA (Internal Intranet)",
     year: "2019–2025",
     tags: ["Front-End", "UX", "JavaScript", "CSS Animations", "Intranet"],
 
@@ -415,7 +415,7 @@ export const caseStudies = [
   {
     slug: "finance-department-dashboard",
     title: "Finance Department Dashboard",
-    client: "Confidential (Internal Intranet)",
+    client: "Phoenix Contact, USA (Internal Intranet)",
     year: "2020–2025",
     tags: ["UX", "Front-End", "Information Architecture", "Legacy Systems"],
 
