@@ -1,6 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import Toast from "./Toast";
 
+function isExternal(href) {
+  return /^https?:\/\//.test(href);
+}
+
 function Badge({ children, variant = "default" }) {
   const styles =
     variant === "status"
@@ -14,11 +18,52 @@ function Badge({ children, variant = "default" }) {
   );
 }
 
+function ProjectLinks({ links = [], status, onComingSoon }) {
+  const primary = links.find((l) => l.kind === "primary") || links[0];
+  const secondary = links.find((l) => l.kind === "secondary") || links[1];
+
+  if (!primary) {
+    return (
+      <button
+        type="button"
+        onClick={onComingSoon}
+        className="inline-flex items-center rounded-xl border border-border bg-surface/40 px-4 py-2 text-sm text-muted hover:bg-surface/60 transition"
+      >
+        {status || "Coming soon"}
+      </button>
+    );
+  }
+
+  return (
+    <div className="mt-5 flex flex-wrap gap-3">
+      <a
+        href={primary.href}
+        className="btn btn-primary"
+        target={isExternal(primary.href) ? "_blank" : undefined}
+        rel={isExternal(primary.href) ? "noreferrer" : undefined}
+      >
+        {primary.label}
+      </a>
+
+      {secondary ? (
+        <a
+          href={secondary.href}
+          className="btn btn-secondary"
+          target={isExternal(secondary.href) ? "_blank" : undefined}
+          rel={isExternal(secondary.href) ? "noreferrer" : undefined}
+        >
+          {secondary.label}
+        </a>
+      ) : null}
+    </div>
+  );
+}
+
 export default function ProjectCard({
   title,
   description,
   stack = [],
-  links,
+  links = [],
   status,
   type,
   goal,
@@ -26,16 +71,17 @@ export default function ProjectCard({
 }) {
   const [toastOpen, setToastOpen] = useState(false);
 
-  // Treat missing link or "#" as "coming soon"
-  const projectUrl = useMemo(() => links?.project, [links]);
-  const hasLiveLink = projectUrl && projectUrl !== "#";
+  // Determine the “main” URL (used for thumbnail click)
+  const primaryLink = useMemo(
+    () => links.find((l) => l.kind === "primary") || links[0],
+    [links]
+  );
 
   function handleComingSoon(e) {
     e?.preventDefault?.();
     setToastOpen(true);
   }
 
-  // Auto-hide toast after a moment
   useEffect(() => {
     if (!toastOpen) return;
     const t = window.setTimeout(() => setToastOpen(false), 2400);
@@ -46,11 +92,11 @@ export default function ProjectCard({
     <article className="card-hover overflow-hidden rounded-2xl border border-border bg-surface/40">
       {/* Thumbnail */}
       {thumbnail ? (
-        hasLiveLink ? (
+        primaryLink ? (
           <a
-            href={projectUrl}
-            target="_blank"
-            rel="noreferrer"
+            href={primaryLink.href}
+            target={isExternal(primaryLink.href) ? "_blank" : undefined}
+            rel={isExternal(primaryLink.href) ? "noreferrer" : undefined}
             className="block"
           >
             <img
@@ -81,12 +127,11 @@ export default function ProjectCard({
           <h2 className="text-2xl font-semibold tracking-tight text-text">
             {title}
           </h2>
-
           {status ? <Badge variant="status">{status}</Badge> : null}
         </div>
 
         {(type || goal) && (
-          <p className="mt-8 text-sm text-muted">
+          <p className="mt-3 text-sm text-muted">
             {type ? <span className="text-text">{type}</span> : null}
             {type && goal ? <span className="text-muted/70"> • </span> : null}
             {goal ? <span>{goal}</span> : null}
@@ -103,33 +148,19 @@ export default function ProjectCard({
           </div>
         ) : null}
 
-        {/* CTA */}
+        {/* CTA(s) */}
         <div className="mt-6">
-          {hasLiveLink ? (
-            <a
-              href={projectUrl}
-              className="btn btn-primary"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View project →
-            </a>
-          ) : (
-            <button
-              type="button"
-              onClick={handleComingSoon}
-              className="btn btn-secondary"
-            >
-              Preview link coming soon
-            </button>
-          )}
+          <ProjectLinks
+            links={links}
+            status={status}
+            onComingSoon={handleComingSoon}
+          />
         </div>
       </div>
 
-      {/* Toast */}
       <Toast
         open={toastOpen}
-        message={`${title} preview link coming soon.`}
+        message={`${title} link coming soon.`}
         onClose={() => setToastOpen(false)}
       />
     </article>
