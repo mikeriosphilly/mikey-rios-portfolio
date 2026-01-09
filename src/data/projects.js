@@ -1,5 +1,4 @@
 // src/data/projects.js
-
 import tableWhisperThumb from "../assets/projects/tablewhisper/thumb.jpg";
 
 export const projects = [
@@ -21,7 +20,9 @@ export const projects = [
     status: "In development",
     thumbnail: tableWhisperThumb,
     links: {
-      project: "#",
+      project: { status: "comingSoon", label: "Live preview" },
+      // later you’ll change it to:
+      // project: { status: "live", url: "https://..." , label: "Live preview" }
     },
   },
 ];

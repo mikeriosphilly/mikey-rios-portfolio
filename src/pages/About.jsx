@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import headshot from "../assets/about/headshot.png";
+import headshot from "../assets/about/Me-profile.jpg";
 import { Button } from "../components/Button";
 
 function Section({ title, children, align = "left" }) {
@@ -127,13 +127,19 @@ export default function About() {
               </h1>
 
               <p className="mt-5 max-w-2xl text-lg text-muted">
-                I'm a front-end developer with over 16 years of experience
+                I’m a front-end developer with over 16 years of experience
                 building interfaces for real people inside real organizations. I
                 care just as much about communication and collaboration as I do
                 about clean code. My strength is listening carefully,
                 translating fuzzy or non-technical requests into practical
                 solutions, and building interfaces that feel clear, intentional,
-                and actually usable. I like to work in spaces where craft
+                and actually usable.
+              </p>
+              <p className="mt-5 max-w-2xl text-lg text-muted">
+                Outside of my day-to-day development work, I’m also a
+                photographer and community organizer, which has deeply shaped
+                how I think about accessibility, representation, and meeting
+                people where they are. I like to work in spaces where craft
                 matters, people feel heard, and the end result makes someone’s
                 day a little easier.
               </p>
@@ -291,6 +297,7 @@ export default function About() {
                 <Badge>Accessibility</Badge>
                 <Badge>Empathy</Badge>
                 <Badge>Craft</Badge>
+                <Badge>Community</Badge>
               </div>
             </div>
           </div>

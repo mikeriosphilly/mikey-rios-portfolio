@@ -96,7 +96,7 @@ export default function CaseStudy() {
           <img
             src={cs.images.hero}
             alt={`${cs.title} hero`}
-            className="h-[220px] w-full object-cover sm:h-[360px] lg:h-[420px]"
+            className="h-[220px] w-full rounded-2xl object-cover object-top sm:h-[360px] lg:h-[420px]"
             loading="eager"
           />
         </section>

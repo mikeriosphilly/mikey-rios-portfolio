@@ -33,7 +33,7 @@ export default function Layout() {
           <NavLink
             to="/"
             onClick={closeMenu}
-            className="font-semibold tracking-tight text-3xl sm:text-4xl text-text hover:text-accent transition"
+            className="font-special font-semibold tracking-tight text-3xl sm:text-4xl text-text hover:text-accent transition"
           >
             Michael Rios
           </NavLink>

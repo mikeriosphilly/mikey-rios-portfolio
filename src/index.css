@@ -26,6 +26,10 @@ body {
   text-shadow: 0 0 16px color-mix(in oklab, var(--color-glow), transparent 75%);
 }
 
+.font-special {
+  font-family: "Boldonse", system-ui;
+}
+
 @layer base {
   h1 {
     font-family: "Boldonse", system-ui;

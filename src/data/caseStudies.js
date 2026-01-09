@@ -208,6 +208,11 @@ export const caseStudies = [
             "Aligned with HR on what needed to be published, how often, and what content structure would scale.",
         },
         {
+          title: "Define > Build > Review > Refine",
+          detail:
+            "We structured the work around an Agile, iterative cycle: define the next smallest piece of value, build it, review with stakeholders, then refine based on real feedback.",
+        },
+        {
           title: "Wireframe and style guide",
           detail:
             "Designed layouts and a consistent visual system to make entries feel cohesive and easy to read.",
@@ -516,18 +521,6 @@ export const caseStudies = [
     images: {
       thumbnail: FIN_THUMB,
       hero: FIN_HERO,
-      supporting: [
-        {
-          src: FIN_SUP_1,
-          alt: "",
-          caption: "Early layout exploration and hierarchy decisions.",
-        },
-        {
-          src: FIN_SUP_2,
-          alt: "",
-          caption: "Reusable components used throughout the platform.",
-        },
-      ],
     },
   },
 ];

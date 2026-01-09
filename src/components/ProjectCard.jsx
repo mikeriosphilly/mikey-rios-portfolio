@@ -1,3 +1,6 @@
+import { useEffect, useMemo, useState } from "react";
+import Toast from "./Toast";
+
 function Badge({ children, variant = "default" }) {
   const styles =
     variant === "status"
@@ -21,22 +24,56 @@ export default function ProjectCard({
   goal,
   thumbnail,
 }) {
+  const [toastOpen, setToastOpen] = useState(false);
+
+  // Treat missing link or "#" as "coming soon"
+  const projectUrl = useMemo(() => links?.project, [links]);
+  const hasLiveLink = projectUrl && projectUrl !== "#";
+
+  function handleComingSoon(e) {
+    e?.preventDefault?.();
+    setToastOpen(true);
+  }
+
+  // Auto-hide toast after a moment
+  useEffect(() => {
+    if (!toastOpen) return;
+    const t = window.setTimeout(() => setToastOpen(false), 2400);
+    return () => window.clearTimeout(t);
+  }, [toastOpen]);
+
   return (
     <article className="card-hover overflow-hidden rounded-2xl border border-border bg-surface/40">
+      {/* Thumbnail */}
       {thumbnail ? (
-        <a
-          href={links?.project || "#"}
-          target="_blank"
-          rel="noreferrer"
-          className="block"
-        >
-          <img
-            src={thumbnail}
-            alt={`${title} preview`}
-            className="h-48 w-full object-cover transition hover:scale-[1.01]"
-            loading="lazy"
-          />
-        </a>
+        hasLiveLink ? (
+          <a
+            href={projectUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="block"
+          >
+            <img
+              src={thumbnail}
+              alt={`${title} preview`}
+              className="h-48 w-full object-cover transition hover:scale-[1.01]"
+              loading="lazy"
+            />
+          </a>
+        ) : (
+          <button
+            type="button"
+            onClick={handleComingSoon}
+            className="block w-full text-left"
+          >
+            <img
+              src={thumbnail}
+              alt={`${title} preview`}
+              className="h-48 w-full object-cover transition hover:scale-[1.01]"
+              loading="lazy"
+            />
+          </button>
+        )
       ) : null}
 
       <div className="p-6">
@@ -66,19 +103,35 @@ export default function ProjectCard({
           </div>
         ) : null}
 
-        {links?.project ? (
-          <div className="mt-6">
+        {/* CTA */}
+        <div className="mt-6">
+          {hasLiveLink ? (
             <a
-              href={links.project}
-              className="inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-bg transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent/40"
+              href={projectUrl}
+              className="btn btn-primary"
               target="_blank"
               rel="noreferrer"
             >
               View project →
             </a>
-          </div>
-        ) : null}
+          ) : (
+            <button
+              type="button"
+              onClick={handleComingSoon}
+              className="btn btn-secondary"
+            >
+              Preview link coming soon
+            </button>
+          )}
+        </div>
       </div>
+
+      {/* Toast */}
+      <Toast
+        open={toastOpen}
+        message={`${title} preview link coming soon.`}
+        onClose={() => setToastOpen(false)}
+      />
     </article>
   );
 }
