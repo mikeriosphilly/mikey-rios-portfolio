@@ -92,13 +92,17 @@ export default function CaseStudy() {
     <main className="bg-bg text-text">
       {/* TRUE FULL-BLEED HERO IMAGE */}
       {cs.images?.hero ? (
-        <section className="border-b border-border">
+        <section className="border-border">
           <img
             src={cs.images.hero}
             alt={`${cs.title} hero`}
             className="h-[220px] w-full rounded-2xl object-cover object-top sm:h-[360px] lg:h-[420px]"
             loading="eager"
           />
+          <p className="mt-3 text-s text-muted">
+            Representative UI recreated in Figma. Original product visuals are
+            proprietary.
+          </p>
         </section>
       ) : null}
 
