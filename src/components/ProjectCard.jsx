@@ -102,7 +102,7 @@ export default function ProjectCard({
             <img
               src={thumbnail}
               alt={`${title} preview`}
-              className="h-48 w-full object-cover transition hover:scale-[1.01]"
+              className="h-full w-full object-cover transition group-hover:scale-[1.02]"
               loading="lazy"
             />
           </a>
@@ -115,7 +115,7 @@ export default function ProjectCard({
             <img
               src={thumbnail}
               alt={`${title} preview`}
-              className="h-48 w-full object-cover transition hover:scale-[1.01]"
+              className="h-full w-full object-cover transition group-hover:scale-[1.02]"
               loading="lazy"
             />
           </button>
@@ -138,7 +138,15 @@ export default function ProjectCard({
           </p>
         )}
 
-        <p className="mt-4 text-muted">{description}</p>
+        {Array.isArray(description) ? (
+          <div className="mt-4 space-y-3 text-muted">
+            {description.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        ) : (
+          <p className="mt-4 text-muted">{description}</p>
+        )}
 
         {stack.length ? (
           <div className="mt-5 flex flex-wrap gap-2">
