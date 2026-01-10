@@ -1,32 +1,32 @@
 import { Link } from "react-router-dom";
 
-export default function WorkCard({ title, description, slug, thumbnail }) {
+export default function WorkCard({ slug, title, description, thumbnail }) {
+  const thumbSrc = typeof thumbnail === "string" ? thumbnail : thumbnail?.src;
+  const thumbAlt =
+    typeof thumbnail === "string"
+      ? `${title} thumbnail`
+      : thumbnail?.alt || `${title} thumbnail`;
+
   return (
-    <Link
-      to={`/work/${slug}`}
-      className="card-hover group block overflow-hidden rounded-2xl border border-border bg-surface/40 p-6 transition hover:bg-surface/60"
-    >
-      {/* Thumbnail */}
-      {thumbnail ? (
-        <div className="mb-4 aspect-[16/10] overflow-hidden rounded-xl border border-border bg-surface/60">
+    <article className="card-hover overflow-hidden rounded-2xl border border-border bg-surface/40">
+      <Link to={`/work/${slug}`} className="block">
+        {thumbSrc ? (
           <img
-            src={thumbnail}
-            alt=""
-            className="h-full w-full object-cover transition group-hover:scale-[1.02]"
+            src={thumbSrc}
+            alt={thumbAlt}
+            className="h-48 w-full object-cover object-top"
             loading="lazy"
           />
+        ) : null}
+
+        <div className="p-6">
+          <h3 className="text-xl font-semibold tracking-tight text-text">
+            {title}
+          </h3>
+          <p className="mt-3 text-sm text-muted">{description}</p>
+          <p className="mt-5 text-sm text-accent">View case study →</p>
         </div>
-      ) : null}
-
-      <h3 className="text-xl font-semibold text-text transition group-hover:text-accent">
-        {title}
-      </h3>
-
-      <p className="mt-2 text-muted">{description}</p>
-
-      <p className="mt-4 text-sm font-medium text-accent transition group-hover:opacity-90">
-        Read case study →
-      </p>
-    </Link>
+      </Link>
+    </article>
   );
 }
