@@ -1,11 +1,62 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
-import { motion } from "framer-motion";
+import {
+  Menu,
+  X,
+  BriefcaseBusiness,
+  Hammer,
+  ScrollText,
+  Mail,
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import ScrollToTop from "./ScrollToTop";
 
-const base = "text-sm font-medium text-muted hover:text-text transition";
-const active = "text-accent";
+const MotionNavLink = motion(NavLink);
+
+const navBase =
+  "group inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition-all duration-200";
+const navIdle = "text-muted";
+const navHover = "hover:bg-white hover:text-black";
+const navActive = "bg-white text-black shadow-sm";
+
+const iconVariants = {
+  rest: { opacity: 0, x: 10, scale: 0.96 },
+  hover: { opacity: 1, x: 0, scale: 1 },
+};
+
+const iconTransition = {
+  duration: 0.28,
+  ease: [0.16, 1, 0.3, 1],
+};
+
+function DesktopNavItem({ to, label, Icon }) {
+  return (
+    <MotionNavLink
+      to={to}
+      initial="rest"
+      animate="rest"
+      whileHover="hover"
+      className={({ isActive }) =>
+        `${navBase} ${isActive ? navActive : `${navIdle} ${navHover}`}`
+      }
+    >
+      {({ isActive }) => (
+        <>
+          <motion.span
+            aria-hidden="true"
+            className="inline-flex"
+            variants={iconVariants}
+            transition={iconTransition}
+            animate={isActive ? "hover" : undefined}
+          >
+            <Icon size={16} />
+          </motion.span>
+          <span>{label}</span>
+        </>
+      )}
+    </MotionNavLink>
+  );
+}
 
 export default function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,6 +71,14 @@ export default function Layout() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   function closeMenu() {
     setMenuOpen(false);
   }
@@ -27,8 +86,9 @@ export default function Layout() {
   return (
     <div className="min-h-screen text-text">
       <ScrollToTop />
+
       {/* HEADER */}
-      <header className="sticky top-0 z-20 border-b border-border bg-bg md:bg-bg/70 md:backdrop-blur">
+      <header className="sticky top-0 z-50 relative border-b border-border bg-bg md:bg-bg/70 md:backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <NavLink
             to="/"
@@ -39,31 +99,11 @@ export default function Layout() {
           </NavLink>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-5">
-            <NavLink
-              to="/work"
-              className={({ isActive }) => `${base} ${isActive ? active : ""}`}
-            >
-              Work
-            </NavLink>
-            <NavLink
-              to="/projects"
-              className={({ isActive }) => `${base} ${isActive ? active : ""}`}
-            >
-              Projects
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) => `${base} ${isActive ? active : ""}`}
-            >
-              About / Resume
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) => `${base} ${isActive ? active : ""}`}
-            >
-              Contact
-            </NavLink>
+          <nav className="hidden md:flex items-center gap-3">
+            <DesktopNavItem to="/work" label="Work" Icon={BriefcaseBusiness} />
+            <DesktopNavItem to="/projects" label="Projects" Icon={Hammer} />
+            <DesktopNavItem to="/resume" label="Resume" Icon={ScrollText} />
+            <DesktopNavItem to="/contact" label="Contact" Icon={Mail} />
           </nav>
 
           {/* Mobile hamburger */}
@@ -78,30 +118,84 @@ export default function Layout() {
           </button>
         </div>
 
-        {/* Mobile menu */}
-        {menuOpen && (
-          <div className="md:hidden border-t border-border bg-bg/90 backdrop-blur">
-            <nav className="mx-auto max-w-6xl px-6 py-4 flex flex-col gap-3">
-              {["work", "projects", "about", "contact"].map((path) => (
-                <NavLink
-                  key={path}
-                  to={`/${path}`}
-                  onClick={closeMenu}
-                  className={({ isActive }) =>
-                    `rounded-xl px-3 py-2 ${base} ${
-                      isActive ? active : "text-text"
-                    } hover:bg-surface/40`
-                  }
-                >
-                  {path === "about"
-                    ? "About / Resume"
-                    : path[0].toUpperCase() + path.slice(1)}
-                </NavLink>
-              ))}
-            </nav>
-          </div>
-        )}
+        {/* Mobile menu (overlay dropdown) */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              key="mobile-menu"
+              initial={{ opacity: 0, y: -8, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.98 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="md:hidden absolute left-0 right-0 top-full z-50 border-t border-border bg-bg/95 backdrop-blur"
+            >
+              <motion.nav
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                variants={{
+                  hidden: { opacity: 0 },
+                  show: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.05, delayChildren: 0.02 },
+                  },
+                }}
+                className="mx-auto max-w-6xl px-6 py-4 flex flex-col gap-3"
+              >
+                {[
+                  { to: "/work", label: "Work", Icon: BriefcaseBusiness },
+                  { to: "/projects", label: "Projects", Icon: Hammer },
+                  { to: "/resume", label: "Resume", Icon: ScrollText },
+                  { to: "/contact", label: "Contact", Icon: Mail },
+                ].map(({ to, label, Icon }) => (
+                  <motion.div
+                    key={to}
+                    variants={{
+                      hidden: { y: -6, opacity: 0 },
+                      show: {
+                        y: 0,
+                        opacity: 1,
+                        transition: { duration: 0.16 },
+                      },
+                    }}
+                  >
+                    <NavLink
+                      to={to}
+                      onClick={closeMenu}
+                      className={({ isActive }) =>
+                        `${navBase} w-full flex items-center gap-3 ${
+                          isActive
+                            ? navActive
+                            : `${navIdle} hover:bg-surface/40 hover:text-text`
+                        }`
+                      }
+                    >
+                      <Icon size={18} className="opacity-80" />
+                      <span>{label}</span>
+                    </NavLink>
+                  </motion.div>
+                ))}
+              </motion.nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
+
+      {/* Backdrop (tap outside closes) */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.button
+            type="button"
+            aria-label="Close menu"
+            onClick={closeMenu}
+            className="fixed inset-0 z-40 md:hidden bg-black/30"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+          />
+        )}
+      </AnimatePresence>
 
       {/* PAGE CONTENT */}
       <main className="mx-auto max-w-6xl px-6 py-10 sm:py-12">
