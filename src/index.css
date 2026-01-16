@@ -16,7 +16,7 @@
 /* Page defaults */
 html,
 body {
-  background: var(--color-bg);
+  background: transparent;
   color: var(--color-text);
 }
 
@@ -62,15 +62,15 @@ body {
 
   /* Glow on hover + click focus for buttons */
   .btn:hover {
-    box-shadow: 0 0 0 2px
-        color-mix(in oklab, var(--color-glow), transparent 72%),
+    box-shadow:
+      0 0 0 2px color-mix(in oklab, var(--color-glow), transparent 72%),
       0 0 26px color-mix(in oklab, var(--color-glow), transparent 84%);
   }
 
   .btn:focus {
     outline: none;
-    box-shadow: 0 0 0 3px
-        color-mix(in oklab, var(--color-glow), transparent 60%),
+    box-shadow:
+      0 0 0 3px color-mix(in oklab, var(--color-glow), transparent 60%),
       0 0 28px color-mix(in oklab, var(--color-glow), transparent 82%);
   }
 
@@ -81,8 +81,8 @@ body {
       var(--color-glow),
       var(--color-border) 60%
     );
-    box-shadow: 0 0 0 2px
-        color-mix(in oklab, var(--color-glow), transparent 85%),
+    box-shadow:
+      0 0 0 2px color-mix(in oklab, var(--color-glow), transparent 85%),
       0 18px 50px color-mix(in oklab, var(--color-glow), transparent 90%);
   }
 

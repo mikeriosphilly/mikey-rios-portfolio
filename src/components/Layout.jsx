@@ -25,7 +25,7 @@ export default function Layout() {
   }
 
   return (
-    <div className="min-h-screen bg-bg text-text">
+    <div className="min-h-screen text-text">
       <ScrollToTop />
       {/* HEADER */}
       <header className="sticky top-0 z-10 border-b border-border bg-bg/70 backdrop-blur">
