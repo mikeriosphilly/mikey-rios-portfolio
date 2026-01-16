@@ -28,7 +28,7 @@ export default function Layout() {
     <div className="min-h-screen text-text">
       <ScrollToTop />
       {/* HEADER */}
-      <header className="sticky top-0 z-10 border-b border-border bg-bg/70 backdrop-blur">
+      <header className="sticky top-0 z-20 border-b border-border bg-bg md:bg-bg/70 md:backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <NavLink
             to="/"
