@@ -3,7 +3,7 @@ import { caseStudies } from "../data/caseStudies";
 
 export default function Work() {
   return (
-    <main className="bg-bg">
+    <main className="text-text rounded-3xl bg-surface/50 backdrop-blur-md">
       <section className="mx-auto max-w-5xl px-6 py-16 space-y-6">
         <header className="space-y-2">
           <h1>Work</h1>

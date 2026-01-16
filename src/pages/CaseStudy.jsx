@@ -106,7 +106,7 @@ export default function CaseStudy() {
       : "Representative UI recreated in Figma. Original product visuals are proprietary.";
 
   return (
-    <main className="bg-bg text-text">
+    <main className="text-text rounded-3xl bg-surface/50 backdrop-blur-md">
       {/* HERO IMAGE */}
       {heroSrc ? (
         <section className="mx-auto w-full max-w-5xl px-4 sm:px-6 pt-8 sm:pt-10">

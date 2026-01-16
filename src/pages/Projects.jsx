@@ -3,7 +3,7 @@ import { projects } from "../data/projects";
 
 export default function Projects() {
   return (
-    <main className="bg-bg">
+    <main className="text-text rounded-3xl bg-surface/50 backdrop-blur-md">
       <section className="mx-auto max-w-5xl px-6 py-16">
         <header className="space-y-3">
           <h1>Projects</h1>

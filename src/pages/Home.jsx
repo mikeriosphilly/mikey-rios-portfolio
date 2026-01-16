@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import WorkCard from "../components/WorkCard";
 import { caseStudies } from "../data/caseStudies";
 import heroImage from "../assets/home/hero.png";
+import { GradientText } from "@/components/animate-ui/primitives/texts/gradient";
+import { TypingText } from "@/components/animate-ui/primitives/texts/typing";
 
 const featured = caseStudies.filter((cs) => cs.featured);
 
@@ -9,7 +11,7 @@ export default function Home() {
   return (
     <div className="space-y-24 text-text ">
       {/* Hero */}
-      <section className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen border-b border-border bg-bg">
+      <section className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-transparent">
         {/* subtle purple glow */}
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,theme(colors.glow)/18%,transparent_60%)]" />
 
@@ -18,9 +20,13 @@ export default function Home() {
             {/* Text */}
             <div className="space-y-6">
               <h1>
-                Hi! I like to build front-end and UX work that puts people
-                first.
+                <GradientText
+                  text="Hi! I like to build front-end and UX work that puts people
+                  first."
+                  gradient="linear-gradient(90deg, #b7ff2a 0%, rgba(36, 250, 136, 1)25%, rgba(99, 229, 241, 1)50%, rgba(203, 99, 241, 1)75%,  #b7ff2a 100%)"
+                ></GradientText>
               </h1>
+
               <p className="text-lg text-muted">
                 I design and build accessible, people-centered interfaces with a
                 focus on clarity and usability. My goal is always to reduce
@@ -54,7 +60,9 @@ export default function Home() {
       {/* Featured Work */}
       <section className="mt-14 space-y-6">
         <header className="space-y-2">
-          <h2 className="text-3xl font-bold">Featured Work</h2>
+          <h2 className="text-3xl font-bold">
+            <TypingText text="Featured Work:" />
+          </h2>
           <p className="max-w-2xl text-muted">
             Selected case studies focused on usability, clarity, and front-end
             implementation.

@@ -115,7 +115,7 @@ export default function About() {
   ];
 
   return (
-    <main className="bg-bg text-text">
+    <main className="text-text rounded-3xl bg-surface/50 backdrop-blur-md">
       {/* Hero */}
       <header className="py-16">
         <div className="mx-auto max-w-5xl px-6">

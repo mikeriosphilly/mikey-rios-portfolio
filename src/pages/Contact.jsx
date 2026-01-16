@@ -105,11 +105,11 @@ export default function Contact() {
   const body = encodeURIComponent(
     `Hi Mikey,\n\nMy name is ${form.name || "[your name]"}.\n\n${
       form.message || "[your message]"
-    }\n\nReply to: ${form.email || "[your email]"}\n`
+    }\n\nReply to: ${form.email || "[your email]"}\n`,
   );
 
   return (
-    <main className="bg-bg">
+    <main className="text-text rounded-3xl bg-surface/50 backdrop-blur-md">
       <Section title="Contact">
         <p className="max-w-3xl text-lg text-muted">
           Thank you for taking the time to reach out!
