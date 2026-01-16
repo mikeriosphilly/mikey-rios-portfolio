@@ -117,7 +117,7 @@ export default function Layout() {
       </main>
 
       {/* FOOTER */}
-      <footer className="border-t border-border">
+      <footer className="border-t border-transparent">
         <div className="mx-auto max-w-6xl px-6 py-10 text-sm text-muted">
           © {new Date().getFullYear()} Michael Rios
         </div>

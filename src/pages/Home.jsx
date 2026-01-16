@@ -27,7 +27,7 @@ export default function Home() {
                 ></GradientText>
               </h1>
 
-              <p className="text-lg text-muted">
+              <p className="text-lg text-muted rounded-3xl bg-surface/50 backdrop-blur-md p-4">
                 I design and build accessible, people-centered interfaces with a
                 focus on clarity and usability. My goal is always to reduce
                 friction and make things easier to understand.
@@ -58,7 +58,7 @@ export default function Home() {
       </section>
 
       {/* Featured Work */}
-      <section className="mt-14 space-y-6">
+      <section className="mt-14 space-y-6 rounded-3xl bg-surface/50 backdrop-blur-md p-4">
         <header className="space-y-2">
           <h2 className="text-3xl font-bold">
             <TypingText text="Featured Work:" />
@@ -83,7 +83,7 @@ export default function Home() {
       </section>
 
       {/* About teaser */}
-      <section className="space-y-4">
+      <section className="mt-14 space-y-6 rounded-3xl bg-surface/50 backdrop-blur-md p-4">
         <h2 className="text-3xl font-bold">About</h2>
         <p className="max-w-2xl text-muted">
           I’m a front-end developer with a background in content strategy,
