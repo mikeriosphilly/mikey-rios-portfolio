@@ -13,13 +13,16 @@ import ColorBends from "./components/backgrounds/ColorBends";
 
 export default function App() {
   return (
-    <div className="min-h-screen text-text overflow-x-hidden">
-      {/* Background layer (mobile + desktop) */}
-      <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
+    <div className="relative min-h-screen text-text overflow-x-hidden">
+      {/* Background layer */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        aria-hidden="true"
+      >
         {/* Base dark background for ALL sizes */}
         <div className="absolute inset-0 bg-bg" />
 
-        {/* Mobile fallback (no WebGL) */}
+        {/* Mobile fallback (no WebGL, stretches with page) */}
         <div className="absolute inset-0 md:hidden bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.22),transparent_60%),radial-gradient(circle_at_bottom,rgba(59,130,246,0.18),transparent_55%),linear-gradient(120deg,rgba(236,72,153,0.10),transparent_55%)]" />
         <div className="absolute inset-0 md:hidden bg-black/10" />
 
