@@ -23,7 +23,7 @@ export default function App() {
           scale={3.6}
           frequency={1.6}
           warpStrength={0.95}
-          mouseInfluence={0.2}
+          mouseInfluence={0}
           noise={0.11}
         />
         {/* Optional readability veil (recommended) */}
