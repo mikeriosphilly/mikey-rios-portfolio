@@ -14,7 +14,9 @@
 }
 
 /* Page defaults */
-html,
+html {
+  background: var(--color-bg);
+}
 body {
   background: transparent;
   color: var(--color-text);

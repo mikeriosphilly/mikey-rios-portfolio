@@ -13,8 +13,11 @@ import ColorBends from "./components/backgrounds/ColorBends";
 
 export default function App() {
   return (
-    <div className="min-h-screen text-text overflow-x-hidden">
-      <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
+    <div className="relative min-h-screen bg-bg text-text overflow-x-hidden">
+      <div
+        className="pointer-events-none fixed left-0 top-0 z-0 w-full h-[100dvh]"
+        aria-hidden="true"
+      >
         <div className="absolute inset-0 bg-bg" />
 
         <div className="absolute inset-0">
