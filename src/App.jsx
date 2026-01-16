@@ -27,7 +27,7 @@ export default function App() {
         <div className="absolute inset-0 md:hidden bg-black/10" />
 
         {/* Desktop ColorBends */}
-        <div className="hidden md:block absolute inset-0">
+        <div className="hidden absolute inset-0">
           <ColorBends
             rotation={38}
             autoRotate={-3}
