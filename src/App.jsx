@@ -15,7 +15,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-bg text-text overflow-x-hidden">
       <div
-        className="pointer-events-none fixed left-0 top-0 z-0 w-full h-[120dvh]"
+        className="pointer-events-none fixed left-0 top-0 z-0 w-full h-[140dvh]"
         aria-hidden="true"
       >
         <div className="absolute inset-0 bg-bg" />
