@@ -15,7 +15,8 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-bg text-text overflow-x-hidden">
       <div
-        className="pointer-events-none fixed left-0 top-0 z-0 w-full h-[140dvh]"
+        className="pointer-events-none fixed left-0 top-0 z-0 w-full h-[100dvh]"
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         aria-hidden="true"
       >
         <div className="absolute inset-0 bg-bg" />
@@ -35,7 +36,10 @@ export default function App() {
         </div>
       </div>
 
-      <div className="relative z-10">
+      <div
+        className="relative z-10"
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      >
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<Home />} />
