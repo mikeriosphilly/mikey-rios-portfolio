@@ -83,7 +83,13 @@ export const projects = [
     thumbnail: tableWhisperThumb,
 
     // No links yet -> ProjectCard will show "Coming soon"
-    links: [],
+    links: [
+      {
+        label: "Live Dev Demo",
+        href: "https://tablewhisper.vercel.app/",
+        kind: "primary",
+      },
+    ],
   },
   {
     title: "Combat Tracker",
