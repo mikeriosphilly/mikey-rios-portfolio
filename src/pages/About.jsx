@@ -272,7 +272,8 @@ export default function About() {
             <ul className="mt-6 list-disc space-y-2 pl-5 text-muted marker:text-accent/70">
               <li>16+ years in front-end web development and UI work</li>
               <li>
-                UX instincts: clarity, hierarchy, accessibility, usability
+                Front-end specialist with full-stack experience (CMS, APIs,
+                deployment)
               </li>
               <li>
                 Comfortable owning builds end-to-end, from design to
