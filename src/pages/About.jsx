@@ -108,11 +108,16 @@ export default function About() {
       label: "Tools & Platforms",
       items: [
         "Git/GitHub",
+        "Jira",
         "Google Analytics",
         "Email Marketing Platforms",
-        "Cloud Deployment",
+        "Cloud Deployment (Vercel, Supabase)",
         "VS Code",
       ],
+    },
+    {
+      label: "Databases",
+      items: ["SQL (basic)", "Data Maintenance", "CSV/XLSX pipelines"],
     },
     {
       label: "Design & Creative",
