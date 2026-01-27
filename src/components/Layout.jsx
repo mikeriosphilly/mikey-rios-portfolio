@@ -102,7 +102,11 @@ export default function Layout() {
           <nav className="hidden md:flex items-center gap-3">
             <DesktopNavItem to="/work" label="Work" Icon={BriefcaseBusiness} />
             <DesktopNavItem to="/projects" label="Projects" Icon={Hammer} />
-            <DesktopNavItem to="/resume" label="Resume" Icon={ScrollText} />
+            <DesktopNavItem
+              to="/about"
+              label="About/Resume"
+              Icon={ScrollText}
+            />
             <DesktopNavItem to="/contact" label="Contact" Icon={Mail} />
           </nav>
 
@@ -145,7 +149,7 @@ export default function Layout() {
                 {[
                   { to: "/work", label: "Work", Icon: BriefcaseBusiness },
                   { to: "/projects", label: "Projects", Icon: Hammer },
-                  { to: "/resume", label: "Resume", Icon: ScrollText },
+                  { to: "/about", label: "About/Resume", Icon: ScrollText },
                   { to: "/contact", label: "Contact", Icon: Mail },
                 ].map(({ to, label, Icon }) => (
                   <motion.div
