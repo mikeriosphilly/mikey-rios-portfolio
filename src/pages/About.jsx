@@ -193,12 +193,15 @@ export default function About() {
       {/* What I do */}
       <Section title="What I do" align="center">
         <p className="mx-auto max-w-3xl text-left text-muted">
-          I sit at the intersection of front-end development, UX, and creative
+          I'm a multidisciplinary creative developer sitting at the intersection
+          of front-end development, full-stack development, and creative
           problem-solving. I spend my days translating ideas into interfaces,
-          shaping structure and hierarchy, and building systems that stay
-          flexible as requirements change. I'm extremely comfortable moving
-          between code and design tools, and I enjoy wearing multiple hats when
-          it helps a project move forward with clarity and momentum.
+          shaping structure and hierarchy, and building flexible systems that
+          stay human as requirements change. I'm extremely comfortable wearing
+          many hats, moving between code and design tools, and collaborating
+          with people from all kinds of backgrounds. Over the years, colleagues
+          have praised my communication skills and ability to translate non-tech
+          speak into dev needs.
         </p>
 
         <div className="mt-10 flex flex-col items-center gap-10">
