@@ -142,8 +142,8 @@ export default function About() {
           <div className="grid items-center gap-10 md:grid-cols-[1.2fr_0.8fr]">
             <div>
               <h1>
-                People-first interfaces, built with craft and a little creative
-                tech magic.
+                Senior Front-End Developer who builds thoughtful interfaces with
+                a little creative magic and a full-stack toolkit.
               </h1>
 
               <p className="mt-5 max-w-2xl text-lg text-muted">
