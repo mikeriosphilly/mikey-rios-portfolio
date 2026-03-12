@@ -197,8 +197,8 @@ body,
   inset: 0;
   background-image: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.055) 1px,
-    transparent 1px
+    rgba(255, 255, 255, 0.18) 1.5px,
+    transparent 1.5px
   );
   background-size: 28px 28px;
   mask-image: radial-gradient(
