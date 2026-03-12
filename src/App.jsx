@@ -9,34 +9,25 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
-import ColorBends from "./components/backgrounds/ColorBends";
-
 export default function App() {
   return (
     <div className="relative min-h-screen bg-bg text-text overflow-x-hidden">
-      {/* Scrolling background layer */}
+      {/* ── Atmospheric background layer (pure CSS, zero JS cost) ── */}
       <div
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
         aria-hidden="true"
       >
-        <div className="absolute inset-0 bg-bg" />
-
-        <div className="absolute inset-0">
-          <ColorBends
-            rotation={38}
-            autoRotate={-2}
-            speed={0.03}
-            scale={3.6}
-            frequency={1.6}
-            warpStrength={0.95}
-            mouseInfluence={0}
-            noise={0.11}
-          />
-          <div className="absolute inset-0 bg-black/15" />
-        </div>
+        <div className="bg-orb bg-orb-purple" />
+        <div className="bg-orb bg-orb-lime" />
+        <div className="bg-orb bg-orb-cyan" />
+        <div className="bg-orb bg-orb-fuchsia" />
+        <div className="bg-orb bg-orb-blue" />
+        <div className="bg-dots" />
+        {/* Grain lives inside the same fixed container so it layers over the orbs */}
+        <div className="bg-grain" />
       </div>
 
-      {/* Content above background */}
+      {/* ── Content ── */}
       <div className="relative z-10">
         <Routes>
           <Route element={<Layout />}>
