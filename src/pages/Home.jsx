@@ -73,7 +73,7 @@ export default function Home() {
           {/* Large full-width headline */}
           <motion.h1
             variants={heroChildVariants}
-            className="!text-5xl sm:!text-6xl lg:!text-7xl xl:!text-[5.25rem] !leading-[1.42] !tracking-[-0.01em]"
+            className="!text-3xl sm:!text-6xl lg:!text-7xl xl:!text-[5.25rem] !leading-[1.42] !tracking-[-0.01em]"
           >
             <GradientText
               text="Hi! I like to build front-end and UX work that puts people first."
